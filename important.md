@@ -23,3 +23,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 ollama start
 ollama pull phi3
 ollama run phi3
+
+### Running Ngrok on docker
+* This is use to forwarad elastic search port for usability in sturn cloud
+docker run --net=host -it -e NGROK_AUTHTOKEN=2jxmLDs217VQopAUJgMQlmlBNdR_4LuHhU4o7UqQ1sGCbt958 ngrok/ngrok:latest http 9200
