@@ -1,3 +1,2 @@
 # LLMZoomcampProject
-* Repository for DataTalks LLM ZOOM CAMP 2024 
-* Contains assignments an Class Notes
+* Repository for Final Project for DataTalks LLM ZOOM CAMP 2024 
