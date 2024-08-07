@@ -27,3 +27,35 @@ ollama run phi3
 ### Running Ngrok on docker
 * This is use to forwarad elastic search port for usability in sturn cloud
 docker run --net=host -it -e NGROK_AUTHTOKEN=2jxmLDs217VQopAUJgMQlmlBNdR_4LuHhU4o7UqQ1sGCbt958 ngrok/ngrok:latest http 9200
+
+### Running Elastic Search on Saturn Cloud 
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.9.1-linux-x86_64.tar.gz
+tar -xzf elasticsearch-8.9.1-linux-x86_64.tar.gz
+cd elasticsearch-8.9.1
+
+If you experience space error
+cd /tmp and install elasticsearch here
+
+To run 
+./bin/elasticsearch
+
+To Test
+curl http://localhost:9200
+
+If you experience security error in connecting to elastic search
+
+Enter your elastic.yml file and chanege the following from true to false
+
+xpack.security.enabled: false
+xpack.security.transport.ssl.enabled: false
+xpack.security.http.ssl.enabled: false
+
+
+You can open it with nano
+To install Nano
+sudo apt install nano
+
+Sudo nano elasticsearch/elasticsearch.yml
+
+Edit the above mention and save your file then restart elastic search
+
