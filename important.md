@@ -59,3 +59,7 @@ Sudo nano elasticsearch/elasticsearch.yml
 
 Edit the above mention and save your file then restart elastic search
 
+
+wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+sudo tar xvzf ./ngrok-v3-stable-linux-amd64.tgz -C /usr/local/bin
+ngrok config add-authtoken 2jxmLDs217VQopAUJgMQlmlBNdR_4LuHhU4o7UqQ1sGCbt958
