@@ -28,7 +28,7 @@ api_key = os.getenv('QDRANT_API_KEY')
 
 client = QdrantClient(
     url="https://8999b86c-f8b2-4d60-bdfa-8c68d39daae7.europe-west3-0.gcp.cloud.qdrant.io:6333", 
-    api_key=api_key,timeout=200
+    api_key="r09oP5L3SaVcMi_MvBC3yBOuRpcYChNeZjzTiEHr5cyoyHiP00CyEw",timeout=200
 )
 
 
