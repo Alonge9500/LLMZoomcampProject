@@ -1,8 +1,4 @@
 import os
-os.environ['HF_HOME'] = '/run/cache/'
-os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'max_split_size_mb:128'
-
-
 import streamlit as st
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer, AutoModelForCausalLM
