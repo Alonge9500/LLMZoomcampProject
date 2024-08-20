@@ -4,3 +4,4 @@ transformers
 torch
 qdrant-client
 python-dotenv
+accelerate
