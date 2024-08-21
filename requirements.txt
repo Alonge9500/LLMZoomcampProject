@@ -5,3 +5,4 @@ torch
 qdrant-client
 python-dotenv
 accelerate
+tensorflow 
