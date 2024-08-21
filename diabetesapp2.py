@@ -2,7 +2,6 @@ import os
 import streamlit as st
 from sentence_transformers import SentenceTransformer
 from transformers import TFAutoModelForSeq2SeqLM, AutoTokenizer
-import tensorflow as tf
 import json
 from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct
@@ -35,7 +34,7 @@ def search_query(query_vector):
 def generate_answer(prompt, context):
     context_str = "\n".join([f"Question: {doc.payload['question']}\nAnswer: {doc.payload['answer']}" for doc in context])
     full_prompt = f"{prompt}\n\nContext:\n{context_str}\n\nAnswer:"
-    inputs = tokenizer(full_prompt, return_tensors="tf", max_length=512, truncation=True)
+    inputs = tokenizer(full_prompt, return_tensors="pt", max_length=512, truncation=True)
     outputs = model.generate(**inputs, max_new_tokens=50)
     answer = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return answer
