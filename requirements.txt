@@ -7,3 +7,4 @@ python-dotenv
 accelerate
 tensorflow 
 tf-keras
+cohere
