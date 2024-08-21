@@ -1,8 +1,8 @@
 import os
 import streamlit as st
 from sentence_transformers import SentenceTransformer
-from transformers import AutoTokenizer, AutoModelForCausalLM
-import torch
+from transformers import TFAutoModelForSeq2SeqLM, AutoTokenizer
+import tensorflow as tf
 import json
 from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct
@@ -14,13 +14,9 @@ load_dotenv()
 # Initialize models
 embedding_model = SentenceTransformer('multi-qa-distilbert-cos-v1')
 
-# Switch to a lighter model
-tokenizer = AutoTokenizer.from_pretrained("distilgpt2")
-model = AutoModelForCausalLM.from_pretrained(
-    "distilgpt2",
-    device_map="cpu",
-    torch_dtype="auto",
-)
+# Use TFLAN model (flan-t5-base)
+tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
+model = TFAutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
 
 api_key = os.getenv('QDRANT_API_KEY')
 
@@ -37,13 +33,11 @@ def search_query(query_vector):
     return hits
 
 def generate_answer(prompt, context):
-    context_str = "\n".join([f"Q: {doc.payload['question']}\nA: {doc.payload['answer']}" for doc in context])
+    context_str = "\n".join([f"Question: {doc.payload['question']}\nAnswer: {doc.payload['answer']}" for doc in context])
     full_prompt = f"{prompt}\n\nContext:\n{context_str}\n\nAnswer:"
-    inputs = tokenizer(full_prompt, return_tensors="pt", max_length=512, truncation=True).to(model.device)
-    with torch.no_grad():
-        outputs = model.generate(**inputs, max_new_tokens=50)
+    inputs = tokenizer(full_prompt, return_tensors="tf", max_length=512, truncation=True)
+    outputs = model.generate(**inputs, max_new_tokens=50)
     answer = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    #answer = answer.split("Answer:")[-1].strip()
     return answer
 
 def rag_function(user_question):
