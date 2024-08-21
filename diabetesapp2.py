@@ -17,6 +17,7 @@ embedding_model = SentenceTransformer('multi-qa-distilbert-cos-v1')
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
 model = TFAutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
 
+
 api_key = os.getenv('QDRANT_API_KEY')
 
 client = QdrantClient(
@@ -34,8 +35,8 @@ def search_query(query_vector):
 def generate_answer(prompt, context):
     context_str = "\n".join([f"Question: {doc.payload['question']}\nAnswer: {doc.payload['answer']}" for doc in context])
     full_prompt = f"{prompt}\n\nContext:\n{context_str}\n\nAnswer:"
-    inputs = tokenizer(full_prompt, return_tensors="pt", max_length=512, truncation=True)
-    outputs = model.generate(**inputs, max_new_tokens=50)
+    inputs = tokenizer(full_prompt, return_tensors="pt", max_length=512, truncation=True).input_ids
+    outputs = model.generate(**inputs, max_new_tokens=500)
     answer = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return answer
 
