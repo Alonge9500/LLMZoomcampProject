@@ -42,9 +42,9 @@ def generate_answer(prompt, context):
     inputs = tokenizer(full_prompt, return_tensors="pt", max_length=512, truncation=True).to(model.device)
     with torch.no_grad():
         outputs = model.generate(**inputs, max_new_tokens=50)
-    #answer = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    answer = tokenizer.decode(outputs[0], skip_special_tokens=True)
     #answer = answer.split("Answer:")[-1].strip()
-    return outputs
+    return answer
 
 def rag_function(user_question):
     # Encode the user question
