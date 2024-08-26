@@ -1,0 +1,12 @@
+
+
+
+[theme]
+primaryColor = "#f39c12"
+backgroundColor = "#2e2e2e"
+secondaryBackgroundColor = "#3a3a3a"
+textColor = "#ecf0f1"
+#font = "sans serif"
+
+# Uncomment to set a specific font
+font = "monospace"

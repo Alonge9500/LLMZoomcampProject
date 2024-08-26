@@ -6,6 +6,12 @@ from sentence_transformers import SentenceTransformer
 from dotenv import load_dotenv
 import cohere
 
+st.set_page_config(
+    page_title="Diabetes App",
+    page_icon=":sparkles:", 
+    layout="centered",  
+    initial_sidebar_state="expanded",
+)
 # Load environment variables
 load_dotenv()
 
