@@ -38,7 +38,7 @@ client.upsert(
         PointStruct(
             id=idx,
             vector=data['qa_text_embeddings'],
-            payload={"question": data['question'], "answer": data['answer'], "rand_number": idx % 10}
+            payload={"question": data['question'], "answer": data['answer'],"id": data['id'], "rand_number": idx % 10}
         )
         for idx, data in enumerate(diabetes_data_with_vectors)
     ]
