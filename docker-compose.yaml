@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.9.1
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    restart: always
+
+  streamlit:
+    image: streamlit/streamlit:latest
+    container_name: streamlit_app
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    command: streamlit run diabetesRag.py
+    ports:
+      - "8501:8501"
+    restart: always
+
+  ngrok:
+    image: wernight/ngrok
+    container_name: ngrok
+    command: ngrok http 8501
+    environment:
+      - NGROK_AUTHTOKEN=2jxmLDs217VQopAUJgMQlmlBNdR_4LuHhU4o7UqQ1sGCbt958
+    ports:
+      - "4040:4040"
+
+volumes:
+  es_data:
+    driver: local
