@@ -10,6 +10,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct
 from dotenv import load_dotenv
 import cohere
+from tqdm.auto import tqdm
 
 
 # Load environment variables
@@ -74,7 +75,7 @@ llm_answers = []
 cosine_similarities = []
 
 # Process each sampled entry
-for entry in sampled_data:
+for entry in tqdm(sampled_data):
     question = entry['question']
     original_answer = entry['answer']
     question_id = entry['id']
@@ -107,3 +108,8 @@ df = pd.DataFrame({
 
 print(df)
 print(f"The Average Cosine Similarity fo the 30 samples is {df['Cosine Similarity'].mean()}")
+
+# Save to a CSV file
+df.to_csv('llm_comparison_results.csv', index=False)
+
+print("Process completed. Results saved to 'llm_comparison_results.csv'.")
