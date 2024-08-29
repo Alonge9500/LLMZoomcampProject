@@ -3,6 +3,13 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+st.set_page_config(
+    page_title="Diabetes App",
+    page_icon=":sparkles:", 
+    layout="centered",  
+    initial_sidebar_state="expanded",
+)
+
 # Load data from SQLite database
 conn = sqlite3.connect('diabetes_chatbot.db')
 query = "SELECT * FROM interactions"
