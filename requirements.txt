@@ -1,8 +1,7 @@
-cohere==5.8.1
-db==0.1.1
-db-sqlite3==0.0.1
-pandas==1.5.3
-plotly==5.23.0
-python-dotenv==1.0.1
-qdrant-client==1.11.1
-sentence-transformers==3.0.1
+cohere
+db-sqlite3
+pandas
+plotly
+python-dotenv
+qdrant-client
+sentence-transformers
