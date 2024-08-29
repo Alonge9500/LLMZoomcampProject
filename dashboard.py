@@ -4,7 +4,7 @@ import plotly.express as px
 import streamlit as st
 
 st.set_page_config(
-    page_title="Diabetes App",
+    page_title="Monitoring Dashboard",
     page_icon=":sparkles:", 
     layout="centered",  
     initial_sidebar_state="expanded",
