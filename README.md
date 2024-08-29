@@ -126,6 +126,7 @@ The application interface is built using Streamlit, providing an easy-to-use pla
 ## Monitoring
 
 The system includes a monitoring feature that collects user feedback and displays it on a dashboard created with Streamlit and Plotly. The dashboard includes various charts to track system performance and user interactions.
+Link to Monitoring Dashboard -> https://monitoringdashboard.streamlit.app/
 
 ![Dashboard Screenshot](/images/dashboard.JPG)
 
