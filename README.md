@@ -37,8 +37,8 @@ The aim of this project is to create a system that can provide accurate and rele
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/diabetes-qna-rag-system.git
-cd diabetes-qna-rag-system
+git clone https://github.com/Alonge9500/LLMZoomcampProject.git
+cd LLMZoomcampProject.git
 ```
 
 ### 2. Install Dependencies
@@ -49,18 +49,31 @@ Make sure you have Python 3.8+ installed. Install the required Python packages:
 pip install -r requirements.txt
 ```
 
+### 2.1 Prepare DATA
+
+To Load and add Index To your DATA and save as CSV file
+
+```bash
+python base_file_indexing.py
+```
+To Load data with index and create vectors embeddings and save the result as a CSV file
+
+```bash
+python create_vectors.py
+```
+
 ### 3. Ingest Data into the Knowledge Base
 
 To ingest data into Qdrant:
 
 ```bash
-python scripts/ingestion_with_qdrant.py
+python ingestion_with_qdrant.py
 ```
 
 To ingest data into Elasticsearch:
 
 ```bash
-python scripts/ingestion_with_elasticsearch.py
+python ingestion_with_elasticsearch.py
 ```
 
 ### 4. Evaluate Retrieval Performance
@@ -68,7 +81,7 @@ python scripts/ingestion_with_elasticsearch.py
 To evaluate the Qdrant retrieval:
 
 ```bash
-python scripts/retrieval_evaluator_qdrant.py
+python retrieval_evaluator_qdrant.py
 ```
 
 **Qdrant Evaluation Results:**
@@ -78,7 +91,7 @@ python scripts/retrieval_evaluator_qdrant.py
 To evaluate Elasticsearch retrieval (both hybrid and vector-only search):
 
 ```bash
-python scripts/retrieval_evaluator_elasticsearch.py
+python retrieval_evaluator_elasticsearch.py
 ```
 
 **Elasticsearch Evaluation Results:**
@@ -94,7 +107,7 @@ python scripts/retrieval_evaluator_elasticsearch.py
 To evaluate the RAG flow:
 
 ```bash
-python scripts/rag_evaluator.py
+python rag_evaluator.py
 ```
 
 **RAG Evaluation Results:**
@@ -105,15 +118,16 @@ python scripts/rag_evaluator.py
 Launch the Streamlit app to interact with the RAG system:
 
 ```bash
-streamlit run app/streamlit_app.py
+streamlit run diabetesRag.py
 ```
+ Or Start with Docker Compose
 
 ### 7. Monitoring and User Feedback
 
 To monitor the application and view user feedback, run the dashboard:
 
 ```bash
-streamlit run dashboard/monitoring_dashboard.py
+streamlit run monitoring_dashboard.py
 ```
 
 The monitoring dashboard collects user feedback and some other metrics, store it in the database using sqlite3 and visualizes it using Plotly charts as shown in the image below.
@@ -149,4 +163,4 @@ The application can be deployed to the cloud using Streamlit Cloud: https://llmz
 
 ## Conclusion
 
-This project demonstrates the effective use of RAG techniques to build a robust Q&A system for diabetes-related queries. It includes comprehensive evaluation metrics, a user-friendly interface, and a detailed monitoring dashboard, making it a valuable tool for both end-users and developers.
+This project put to use all the knowledege gathered in LLMZOOMCAMP 2024 by DATATALKS, it demonstrates the effective use of RAG techniques to build a robust Q&A system for diabetes-related queries. It includes comprehensive evaluation metrics, a user-friendly interface, and a detailed monitoring dashboard, making it a valuable tool for both end-users and developers.
