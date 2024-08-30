@@ -20,16 +20,25 @@ The aim of this project is to create a system that can provide accurate and rele
 ## Project Structure
 
 ```plaintext
+├── scripts
 │   ├── ingestion_with_qdrant.py
 │   ├── ingestion_with_elasticsearch.py
 │   ├── retrieval_evaluator_qdrant.py
 │   ├── retrieval_evaluator_elasticsearch.py
 │   ├── rag_evaluator.py
-    ├── dashboard.py
+│   ├── dashboard.py
 │   ├── diabetesRag.py
+├── diabetesRag.py               
+├── dashboard.py               
 ├── README.md
 ├── requirements.txt
-└── Dockerfile
+├── docker-compose.yaml
+├── .streamlit
+│   └── config.toml
+├── database.db           
+└── images                
+│   ├── dashboard.jpg
+│   ├── user_feedback.jpg
 ```
 
 ## Setup Instructions
@@ -54,12 +63,12 @@ pip install -r requirements.txt
 To Load and add Index To your DATA and save as CSV file
 
 ```bash
-python base_file_indexing.py
+python scripts/base_file_indexing.py
 ```
 To Load data with index and create vectors embeddings and save the result as a CSV file
 
 ```bash
-python create_vectors.py
+python scripts/create_vectors.py
 ```
 
 ### 3. Ingest Data into the Knowledge Base
@@ -67,13 +76,13 @@ python create_vectors.py
 To ingest data into Qdrant:
 
 ```bash
-python ingestion_with_qdrant.py
+python scripts/ingestion_with_qdrant.py
 ```
 
 To ingest data into Elasticsearch:
 
 ```bash
-python ingestion_with_elasticsearch.py
+python scripts/ingestion_with_elasticsearch.py
 ```
 
 ### 4. Evaluate Retrieval Performance
@@ -81,7 +90,7 @@ python ingestion_with_elasticsearch.py
 To evaluate the Qdrant retrieval:
 
 ```bash
-python retrieval_evaluator_qdrant.py
+python scripts/retrieval_evaluator_qdrant.py
 ```
 
 **Qdrant Evaluation Results:**
@@ -91,7 +100,7 @@ python retrieval_evaluator_qdrant.py
 To evaluate Elasticsearch retrieval (both hybrid and vector-only search):
 
 ```bash
-python retrieval_evaluator_elasticsearch.py
+python scripts/retrieval_evaluator_elasticsearch.py
 ```
 
 **Elasticsearch Evaluation Results:**
@@ -107,7 +116,7 @@ python retrieval_evaluator_elasticsearch.py
 To evaluate the RAG flow:
 
 ```bash
-python rag_evaluator.py
+python scripts/rag_evaluator.py
 ```
 
 **RAG Evaluation Results:**

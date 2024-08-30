@@ -6,10 +6,11 @@ import streamlit as st
 st.set_page_config(
     page_title="Monitoring Dashboard",
     page_icon=":sparkles:", 
-    layout="centered",  
+    layout="wide",  
     initial_sidebar_state="expanded",
 )
 
+st.header('Rag (Diabetes APP) Monitoring Dashboard')
 # Load data from SQLite database
 conn = sqlite3.connect('diabetes_chatbot.db')
 query = "SELECT * FROM interactions"
