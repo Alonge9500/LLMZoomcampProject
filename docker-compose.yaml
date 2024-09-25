@@ -30,7 +30,7 @@ services:
     container_name: ngrok
     command: ngrok http 8501
     environment:
-      - NGROK_AUTHTOKEN=2jxmLDs217VQopAUJgMQlmlBNdR_4LuHhU4o7UqQ1sGCbt958
+      - NGROK_AUTHTOKEN='REPLACE WITH AUTHORIZATION KEY'
     ports:
       - "4040:4040"
 
